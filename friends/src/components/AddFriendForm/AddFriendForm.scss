@@ -1,0 +1,41 @@
+.addFriendFormCont{
+  max-width: 100%;
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 2% 0;
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0 auto;
+    width: 50%;
+
+    label{
+      color: #aaa;
+      margin-bottom: 1%;
+    }
+
+    input{
+      font-size: 1.2rem;
+      padding: 3px;
+      margin: 1% 0;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    button{
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 3px;
+      margin: 3% 0;
+    }
+
+  }//end form
+
+}//end addFriendFormCont

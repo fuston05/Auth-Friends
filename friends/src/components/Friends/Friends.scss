@@ -1,0 +1,21 @@
+.friendsCont{
+  padding: 3% 0 0 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+
+  button.addButton{
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+
+    &:hover{
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+
+}//end friendsCont
