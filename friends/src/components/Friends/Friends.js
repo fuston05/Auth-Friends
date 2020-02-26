@@ -44,7 +44,6 @@ const Friends = () => {
       setFriends([
         ...delRes.data
       ]) 
-
       console.log('delRes.data: ', delRes.data);
     })
     .catch(delErr => {
@@ -52,17 +51,31 @@ const Friends = () => {
     })
   }//end deleteFriend
 
+  // const editFriend= (friend) => {
+  //   axiosWithAuth()
+  //   .put(`/api/friends/:${friend.id}`)
+  //   .then(editRes => {
+  //     setFriends([
+  //       ...editRes.data
+  //     ]) 
+  //     console.log('editRes.data: ', editRes.data);
+  //   })
+  //   .catch(editErr => {
+  //     console.log('editErr: ', editErr);
+  //   })
+  // }//end editFriend
+
   return (
     <div className= 'friendsCont'>
-      <div className= 'buttonCont'>
-        <button onClick= {handleClick} type= 'button'>Add Friend</button>
-      </div>
+      <button className= 'addButton' onClick= {handleClick} type= 'button'>Add Friend</button>
       {showAddFriend===true ? <AddFriendForm 
         setShowAddFriend= {setShowAddFriend} 
         friends= {friends} 
         setFriends= {setFriends} /> : null}
       {console.log('friends from state: ', friends)}
-      <Friend deleteFriend= {deleteFriend} friends= {friends} />
+      <Friend 
+        deleteFriend= {deleteFriend} 
+        friends= {friends} />
     </div>
   )
 }

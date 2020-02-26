@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Friend = ({friends, deleteFriend}) => {
+//styles
+import './Friend.scss';
+
+const Friend = ({friends, deleteFriend, editFriend}) => {
   return (
     <div className= 'friendCont'>
       {
@@ -8,10 +11,10 @@ const Friend = ({friends, deleteFriend}) => {
           return (
             <div key= {Date.now()*Math.random()} className= 'friendCard'>
               <h1>{friend.name}</h1>
-              <p>{friend.age}</p>
-              <p>{friend.email}</p>
+              <p><b>Age: </b>{friend.age}</p>
+              <p><b>Email: </b>{friend.email}</p>
               <div className= 'friendButtonCont'>
-                <button onClick= {() => deleteFriend(friend)}>Delete</button>
+                <button class= 'deleteButton' onClick= {() => deleteFriend(friend)}>Delete</button>
                 <button>Edit</button>
               </div>
             </div>
