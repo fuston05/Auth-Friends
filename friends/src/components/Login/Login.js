@@ -1,17 +1,33 @@
 import React, {useState} from 'react';
 
+//modules
+import {axiosWithAuth} from '../../utils/axiosWithAuth';
+
 //styles
 import './Login.scss';
 
 const Login = () => {
-
+  const [isLoading, setIsLoading]= useState(false);
   const [formValue, setFormValue]= useState({
-    userName: '',
+    username: '',
     password: ''
   });
 
   const handleSubmit= e => {
     e.preventDefault();
+    setIsLoading(true);
+
+    axiosWithAuth()
+    .post('/api/login', formValue)
+    .then(res => {
+      window.localStorage.setItem('token', res.data.payload);
+      console.log('res.data.payload', res.data.payload);
+      setIsLoading(false);
+    })
+    .catch(err => {
+      console.log('err', err);
+    })
+
     console.log('submitted!');
   }//end handleSubmit
 
@@ -31,13 +47,13 @@ const Login = () => {
           type= 'text'
           placeholder= 'Username'
           id= 'userName'
-          name= 'userName'
+          name= 'username'
           onChange= {handleChange}
-          value= {formValue.userName}
+          value= {formValue.username}
         />
         <label htmlFor= 'password'>Password</label>
         <input 
-          type= 'password'
+          type= 'text'
           placeholder= 'Password'
           id= 'password'
           name= 'password'
