@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom';
 //components
 import Login from './components/Login/Login';
 import Friends from './components/Friends/Friends';
+import {PrivateRoute} from './components/PrivateRoute/PrivateRoute';
 
 //styles
 import './App.scss';
@@ -15,9 +16,7 @@ function App() {
       <Route exact path= '/'>
         <Login />
       </Route>
-      <Route exact path= '/friends'>
-        <Friends />
-      </Route>
+      <PrivateRoute exact path= '/friends' component= {Friends} />
     </div>
   );
 }//end App

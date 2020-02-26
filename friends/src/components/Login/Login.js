@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 
+
+//components
+import Loader from '../Loader/Loader';
+
 //modules
 import {axiosWithAuth} from '../../utils/axiosWithAuth';
 
@@ -20,9 +24,12 @@ const Login = () => {
     axiosWithAuth()
     .post('/api/login', formValue)
     .then(res => {
-      window.localStorage.setItem('token', res.data.payload);
-      console.log('res.data.payload', res.data.payload);
-      setIsLoading(false);
+      setTimeout( () => {
+        window.localStorage.setItem('token', res.data.payload);
+        console.log('res.data.payload', res.data.payload);
+        setIsLoading(false);
+      }, 1000);
+      
     })
     .catch(err => {
       console.log('err', err);
@@ -61,7 +68,9 @@ const Login = () => {
           value= {formValue.password}
         />
         <button type= 'submit'>Submit</button>
-      </form>      
+      </form>  
+      {isLoading ? <Loader background= 'withBg' text= "Loading..." />: null} 
+      {window.localStorage.getItem('token') ? <p>Log in Success!</p>: null}   
     </div>
   )
 }
